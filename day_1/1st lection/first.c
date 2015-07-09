@@ -10,9 +10,7 @@ int main()
   int fd[2];
   pipe(fd);
   char buf[BSIZE];
-  ssize_t c;
 
-  
   switch(pid = fork())
    {
     case -1:
@@ -21,7 +19,7 @@ int main()
 
     case 0:
      close(fd[1]);
-     
+     ssize_t c;
      c = read(fd[1], buf, 20);
      printf("%s\n", (char *)c);
      char *string = "huehuehue";
